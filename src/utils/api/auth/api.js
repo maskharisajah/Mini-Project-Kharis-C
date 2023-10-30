@@ -1,17 +1,21 @@
 export const login = async (data) => {
   try {
-    const dummyUser = { username: "admin", password: "password123" };
+    const dummyUsers = [
+      { username: "admin", password: "password123" },
+      { username: "user1", password: "pass1" },
+      { username: "user2", password: "pass2" },
+    ];
 
-    if (data.username === dummyUser.username && data.password === dummyUser.password) {
-      return data;
-    } else if (data.username === dummyUser.username && data.password !== dummyUser.password) {
-      throw Error("Invalid password");
-    } else if (data.username !== dummyUser.username && data.password === dummyUser.password) {
-      throw Error("Invalid username");
+    const matchedUser = dummyUsers.find((user) => user.username === data.username);
+    if (!matchedUser) {
+      throw new Error("Invalid username");
+    }
+    if (matchedUser.password === data.password) {
+      return matchedUser;
     } else {
-      throw Error("Invalid username or password");
+      throw new Error("Invalid password");
     }
   } catch (error) {
-    throw Error(error.message);
+    throw new Error(error.message);
   }
 };

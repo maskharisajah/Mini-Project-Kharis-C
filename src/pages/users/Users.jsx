@@ -14,13 +14,13 @@ const schema = z.object({
   id: z.string().optional(),
   userName: z
     .string()
-    .min(1, { message: "Please enter a valid username" })
-    .max(25, { message: "Product name must not exceed 25 characters" }),
+    .min(1, { message: "Masukan username" })
+    .max(25, { message: "Username tidak boleh melebihi 25 karakter" }),
   passWord: z
     .string()
-    .min(1, { message: "Please enter a valid password" })
-    .max(20, { message: "Product name must not exceed 25 characters" }),
-  email: z.string().email({ message: "Please enter a valid email" }),
+    .min(1, { message: "Masukan password" })
+    .max(20, { message: "Passwordtidak boleh melebihi 20 karakter" }),
+  email: z.string().email({ message: "Masukan email" }),
   gender: z.enum(["Laki-laki", "Perempuan"]),
 });
 
@@ -118,7 +118,7 @@ export default function Index() {
       await updateUser({ ...data, id: selectedId });
       Swal.fire({
         title: "Success",
-        text: "Successfully updated the product",
+        text: "Successfully updated the user",
         showCancelButton: false,
       });
       setSelectedId("");
@@ -146,7 +146,7 @@ export default function Index() {
       await deleteUser(id_user);
       Swal.fire({
         title: "Success",
-        text: "Successfully deleted the product",
+        text: "Successfully deleted user",
         showCancelButton: false,
       });
       fetchData();

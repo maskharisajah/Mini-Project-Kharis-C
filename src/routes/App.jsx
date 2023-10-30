@@ -7,6 +7,7 @@ import Footer from "../components/footer/Footer";
 import Menu from "../components/menu/Menu";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/register";
+import AI from "../pages/aichat/AiChat";
 import "../styles/global.scss";
 import { useEffect } from "react";
 import { setAxiosConfig } from "../utils/axiosWithConfig";
@@ -42,7 +43,7 @@ function App() {
       element: token === "" ? <Navigate to="/login" /> : <Layout />,
       children: [
         {
-          path: "/home",
+          path: "/",
           element: token === "" ? <Navigate to="/login" /> : <Home />,
         },
         {
@@ -52,6 +53,10 @@ function App() {
         {
           path: "/products",
           element: token === "" ? <Navigate to="/login" /> : <Products />,
+        },
+        {
+          path: "/ai",
+          element: token === "" ? <Navigate to="/login" /> : <AI />,
         },
       ],
     },

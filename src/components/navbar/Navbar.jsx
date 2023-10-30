@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { token, changeToken } = useToken();
 
-  function handleLogout() {
+  async function handleLogout() {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     changeToken();
     Swal.fire({
       title: "Success",

@@ -30,8 +30,15 @@ export default function Login() {
 
   async function handleLogin(data) {
     try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const result = await login(data);
       changeToken(JSON.stringify(result));
+      Swal.fire({
+        title: "Success",
+        text: "Successfully Login",
+        showCancelButton: false,
+      });
       navigate("/");
     } catch (error) {
       Swal.fire({

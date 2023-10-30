@@ -14,12 +14,12 @@ const schema = z.object({
   id: z.string().optional(),
   productName: z
     .string()
-    .min(1, { message: "Please enter a valid product name" })
-    .max(25, { message: "Product name must not exceed 25 characters" }),
-  productCategory: z.string().min(1, { message: "Please enter a valid product category" }),
-  productFreshness: z.string().min(1, { message: "Please enter a valid product freshness" }),
-  additionalDescription: z.string().min(1, { message: "Please enter a valid additional description" }),
-  productPrice: z.number().min(1, { message: "Please enter a valid product price" }),
+    .min(1, { message: "Masukan Nama Produk" })
+    .max(25, { message: "Nama Produk Tidak boleh melebihi 25 kata" }),
+  productCategory: z.string().min(1, { message: "Masukan Kategori Produk" }),
+  productFreshness: z.string().min(1, { message: "Masukan Kondisi Produk" }),
+  additionalDescription: z.string().min(1, { message: "Masukan Deskripsi Produk" }),
+  productPrice: z.number().min(1, { message: "Masukan Harga Produk" }),
 });
 
 export default function Index() {
