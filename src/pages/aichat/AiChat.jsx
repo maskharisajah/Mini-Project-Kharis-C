@@ -42,24 +42,24 @@ export default function Index() {
     setIsLoading(true);
     event.preventDefault();
     const userMsg = {
-      message: [
-        {
-          content: prompt,
-          role: "user",
-        },
-        {
-          role: "assistant",
-          content:
-            "Kamu adalah seorang programmer yang sangat menguasai reactjs + vite, tailwind css dan library yang diperlukan, kamu akan menjawab pertanyaan seputar code da programming dengan bahasa yang mudah dimengerti oleh pemula.  ",
-        },
-      ],
+      message: {
+        content: prompt,
+        role: "user",
+      },
     };
     const newData = [...results, userMsg];
     setResults(newData);
     setPrompt("");
     try {
       const response = await openai.chat.completions.create({
-        messages: [{ role: "user", content: prompt }],
+        messages: [
+          { role: "user", content: prompt },
+          {
+            role: "assistant",
+            content:
+              "Kamu adalah seorang ahli dalam pekerjaan untuk memanajemen stok barang pada sebuah toko, kamu akan menjawab pertanyaan seputar manajemen barang dengan bahasa yang mudah dimengerti oleh karyawan",
+          },
+        ],
         model: "gpt-3.5-turbo",
       });
       const choice = response.choices[0];
@@ -73,8 +73,8 @@ export default function Index() {
 
   return (
     <>
-      <div className="flex flex-col overflow-auto py-4 px-8">
-        <Button label="Hallo, Saya adalah chatbot yang akan membantu kamu untuk menjawab pertanyaan seputar inventori barang" />
+      <div className="grow flex flex-col overflow-auto py-4 px-8">
+        <Button label="Hallo, Saya adalah chatbot yang akan membantu kamu untuk menjawab pertanyaan seputar inventori barang" />
         {results.map((result) => (
           <p
             className={clsx(
@@ -86,8 +86,8 @@ export default function Index() {
             {result.message.content}
           </p>
         ))}
-        <form onSubmit={handleSubmit} className="flex items-center gap-3 w-full">
-          <Input placeholder="masukan prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+        <form onSubmit={handleSubmit} className="flex items-center gap-3">
+          <Input placeholder="insert prompt" value={prompt} onChange={(e) => setPrompt(e.target.value)} />
           <Button
             label={isLoading ? "Loading" : "Submit"}
             type="submit"
