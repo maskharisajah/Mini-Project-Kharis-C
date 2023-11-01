@@ -187,6 +187,7 @@ export default function Index() {
             aria-label="input-password"
             label="Password"
             name="passWord"
+            type="password"
             register={register}
             error={errors.passWord?.message}
           />
@@ -195,6 +196,7 @@ export default function Index() {
             aria-label="input-email"
             label="Email"
             name="email"
+            type="email"
             register={register}
             error={errors.email?.message}
           />

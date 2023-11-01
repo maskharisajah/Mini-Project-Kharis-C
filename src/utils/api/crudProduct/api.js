@@ -25,7 +25,6 @@ export const createProduct = async (data) => {
   try {
     const newData = {
       ...data,
-      image: "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png",
     };
     const response = await axiosWithConfig.post("/products", newData);
 
@@ -40,7 +39,6 @@ export const updateProduct = async (data) => {
   try {
     const newData = {
       ...data,
-      image: "https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png",
     };
     const response = await axiosWithConfig.put(`/products/${id}`, newData);
 
