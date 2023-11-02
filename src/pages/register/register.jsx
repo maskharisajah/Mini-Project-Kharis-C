@@ -97,7 +97,11 @@ export default function Index() {
       const result = await getUser();
       setUser(result);
     } catch (error) {
-      console.log(error.toString());
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
     }
   }
 

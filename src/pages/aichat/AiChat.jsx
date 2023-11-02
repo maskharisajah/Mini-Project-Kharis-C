@@ -32,7 +32,11 @@ export default function Index() {
       });
       setResults(response.choices);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
     } finally {
       setIsLoading(false);
     }
@@ -65,7 +69,11 @@ export default function Index() {
       const choice = response.choices[0];
       setResults([...newData, choice]);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
     } finally {
       setIsLoading(false);
     }

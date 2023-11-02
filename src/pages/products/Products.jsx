@@ -103,7 +103,11 @@ export default function Index() {
       const result = await getProducts();
       setProducts(result);
     } catch (error) {
-      console.log(error.toString());
+      Swal.fire({
+        title: "Error",
+        text: error.message,
+        showCancelButton: false,
+      });
     }
   }
 
